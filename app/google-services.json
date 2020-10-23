@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "445088753087",
+    "firebase_url": "https://rails-2e21d.firebaseio.com",
+    "project_id": "rails-2e21d",
+    "storage_bucket": "rails-2e21d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445088753087:android:3f76c36059ffa73f4aad0a",
+        "android_client_info": {
+          "package_name": "com.skunk.kibandastore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445088753087-o6hev7pqgk4vgtfsetogjlhdn8qe8ckv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnQ4LUtpmnIcCyx4bIuef0mlPXvewW1ms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445088753087-o6hev7pqgk4vgtfsetogjlhdn8qe8ckv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

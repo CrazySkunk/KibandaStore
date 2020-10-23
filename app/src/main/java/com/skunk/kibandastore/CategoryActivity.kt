@@ -24,19 +24,15 @@ class CategoryActivity : AppCompatActivity() {
     private lateinit var toolbar: Toolbar
     private lateinit var adView: AdView
     private lateinit var adapter: CatAdapter
-    private lateinit var catList: List<CatItem>
+    private lateinit var catList: ArrayList<CatItem>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
-        if (toolbar == null) {
-            toolbar = findViewById(R.id.toolbar)
-            if (toolbar != null) {
-                setSupportActionBar(toolbar)
-                supportActionBar!!.title = "Select Category"
-                supportActionBar!!.setHomeButtonEnabled(true)
-                supportActionBar!!.setDisplayShowHomeEnabled(true)
-            }
-        }
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar!!.title = "Select Category"
+        supportActionBar!!.setHomeButtonEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
         adView = findViewById(R.id.adView2)
         categoryRecycler = findViewById(R.id.cat_recycler)
         MobileAds.initialize(this)
@@ -59,14 +55,14 @@ class CategoryActivity : AppCompatActivity() {
 
     private fun getCatList(): ArrayList<CatItem> {
         catList = ArrayList()
-        (catList as ArrayList<CatItem>).add(CatItem(R.drawable.offer, "Vegetables"))
-        (catList as ArrayList<CatItem>).add(CatItem(R.drawable.offer, "Fishes"))
-        (catList as ArrayList<CatItem>).add(CatItem(R.drawable.offer, "Tubers"))
-        (catList as ArrayList<CatItem>).add(CatItem(R.drawable.offer, "Cookies"))
-        (catList as ArrayList<CatItem>).add(CatItem(R.drawable.offer, "Dairy"))
-        (catList as ArrayList<CatItem>).add(CatItem(R.drawable.offer, "Fruits"))
-        (catList as ArrayList<CatItem>).add(CatItem(R.drawable.offer, "Salad"))
-        return catList as ArrayList<CatItem>
+        catList.add(CatItem(R.drawable.offer, "Vegetables"))
+        catList.add(CatItem(R.drawable.offer, "Fishes"))
+        catList.add(CatItem(R.drawable.offer, "Tubers"))
+        catList.add(CatItem(R.drawable.offer, "Cookies"))
+        catList.add(CatItem(R.drawable.offer, "Dairy"))
+        catList.add(CatItem(R.drawable.offer, "Fruits"))
+        catList.add(CatItem(R.drawable.offer, "Salad"))
+        return catList
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

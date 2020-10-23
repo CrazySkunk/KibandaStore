@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skunk.kibandastore.R
 import com.skunk.kibandastore.model.CategoryOffer
 
-class CategoryAdapter(private val categoryList: List<CategoryOffer>, private var listener: OnItemClick) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+class CategoryAdapter(private val categoryList: List<CategoryOffer>, private var listener: OnItemClick?) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
     interface OnItemClick {
         fun onItemClick(position: Int)
     }
@@ -17,7 +17,7 @@ class CategoryAdapter(private val categoryList: List<CategoryOffer>, private var
         this.listener = listener
     }
 
-    class CategoryViewHolder(itemView: View,listener: OnItemClick) : RecyclerView.ViewHolder(itemView) {
+    class CategoryViewHolder(itemView: View,listener: OnItemClick?) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.name)
 
         fun bind(offer: CategoryOffer) {
@@ -27,7 +27,7 @@ class CategoryAdapter(private val categoryList: List<CategoryOffer>, private var
             itemView.setOnClickListener {
                 val position = adapterPosition
                 if (position!=RecyclerView.NO_POSITION){
-                    listener.onItemClick(position)
+                    listener!!.onItemClick(position)
                 }
             }
         }

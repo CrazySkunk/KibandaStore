@@ -57,13 +57,10 @@ public class MainActivity extends AppCompatActivity {
         recentlyViewRecycler.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
         recentlyViewedAdapter = new RecentlyViewedAdapter(getRecentlyViewedList(),null);
         recentlyViewRecycler.setAdapter(recentlyViewedAdapter);
-        recentlyViewedAdapter.setOnItemClickListener(new RecentlyViewedAdapter.OnItemClick() {
-            @Override
-            public void onItemClick(int position) {
-                Intent intent = new Intent(MainActivity.this,CategoryActivity.class);
-                intent.putExtra("Category",recentlyViewed.get(position));
-                startActivity(intent);
-            }
+        recentlyViewedAdapter.setOnItemClickListener(position -> {
+            Intent intent = new Intent(MainActivity.this,CategoryActivity.class);
+            intent.putExtra("Category",recentlyViewed.get(position));
+            startActivity(intent);
         });
 
         hotOfferRecycler = findViewById(R.id.hot_offer_recyclerView);
