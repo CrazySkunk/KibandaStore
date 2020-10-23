@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/cart"
+        android:icon="@drawable/cart"
+        android:title="Cart"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/sell"
+        android:icon="@drawable/sell"
+        android:title="Sell"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/account"
+        android:icon="@drawable/account"
+        android:title="account"
+        app:showAsAction="always" />
+</menu>
