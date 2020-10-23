@@ -7,6 +7,7 @@ import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -15,8 +16,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.skunk.kibandastore.adapters.CatAdapter
 import com.skunk.kibandastore.model.CatItem
+import com.skunk.kibandastore.model.User
+import com.squareup.picasso.Picasso
 import kotlin.math.roundToInt
 
 class CategoryActivity : AppCompatActivity() {
@@ -25,6 +33,8 @@ class CategoryActivity : AppCompatActivity() {
     private lateinit var adView: AdView
     private lateinit var adapter: CatAdapter
     private lateinit var catList: ArrayList<CatItem>
+    lateinit var name: String
+    lateinit var imageUrl: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
@@ -65,16 +75,39 @@ class CategoryActivity : AppCompatActivity() {
         return catList
     }
 
+    private fun getUser() {
+        val ref = FirebaseDatabase.getInstance().getReference("users")
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (ds in snapshot.children) {
+                    val user = ds.getValue(User::class.java)
+                    if (user!!.uid == FirebaseAuth.getInstance().currentUser!!.uid) {
+                        name = user.names.toString()
+                        imageUrl = user.imageUrl.toString()
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.cat_menu, menu)
+        val target: ImageView = menu!!.getItem(R.id.account) as ImageView
+        Picasso.get().load(imageUrl).placeholder(R.drawable.account).resize(50, 50).into(target)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.cart -> startActivity(Intent(this@CategoryActivity, CartActivity::class.java))
+            R.id.sell -> startActivity(Intent(this@CategoryActivity, AddItemActivity::class.java))
         }
-        return super.onOptionsItemSelected(item)
+//        return super.onOptionsItemSelected(item)
+        return true
     }
 
     class GridItemDecorator(private val spanCount: Int, private val spacing: Int, private val includeEdge: Boolean) : RecyclerView.ItemDecoration() {
