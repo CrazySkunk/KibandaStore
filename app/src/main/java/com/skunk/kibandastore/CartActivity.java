@@ -35,6 +35,8 @@ public class CartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cart);
         getUserData();
         Toolbar toolbar = findViewById(R.id.toolbar_cart);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
         pic = toolbar.findViewById(R.id.pro_pic_cart);
         RecyclerView itemRecyclerView = findViewById(R.id.item_recycler);
         Button checkOut = findViewById(R.id.check_out_button);
