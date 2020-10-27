@@ -33,8 +33,8 @@ class CategoryActivity : AppCompatActivity() {
     private lateinit var adView: AdView
     private lateinit var adapter: CatAdapter
     private lateinit var catList: ArrayList<CatItem>
-    lateinit var name: String
-    lateinit var imageUrl: String
+    var name: String? = null
+    var imageUrl: String? =null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
@@ -48,6 +48,7 @@ class CategoryActivity : AppCompatActivity() {
         MobileAds.initialize(this)
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
+        getUser()
         categoryRecycler.setHasFixedSize(true)
         categoryRecycler.layoutManager = GridLayoutManager(this, 3)
         categoryRecycler.addItemDecoration(GridItemDecorator(3, dpToPx(10), true))
@@ -79,11 +80,11 @@ class CategoryActivity : AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance().getReference("users")
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                for (ds in snapshot.children) {
-                    val user = ds.getValue(User::class.java)
-                    if (user!!.uid == FirebaseAuth.getInstance().currentUser!!.uid) {
-                        name = user.names.toString()
-                        imageUrl = user.imageUrl.toString()
+                for (i in snapshot.children) {
+                    val user = i.value as User
+                    if (user.uid == FirebaseAuth.getInstance().currentUser!!.uid) {
+                        name = user.names
+                        imageUrl = user.imageUrl
                     }
                 }
             }

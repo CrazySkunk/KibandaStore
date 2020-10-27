@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/raleway_semibold"
         android:text="Name"
-        android:textColor="@color/black"
+        android:textColor="#000"
         app:layout_constraintBottom_toBottomOf="@+id/image_cat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

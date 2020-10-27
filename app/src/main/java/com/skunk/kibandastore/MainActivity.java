@@ -63,7 +63,12 @@ public class MainActivity extends AppCompatActivity {
         hotOfferRecycler = findViewById(R.id.hot_offer_recyclerView);
         hotOfferRecycler.setHasFixedSize(true);
         hotOfferRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-        hotOffersAdapter = new HotOffersAdapter(getHotOffers());
+        hotOffersAdapter = new HotOffersAdapter(getHotOffers(),null);
+        hotOffersAdapter.setOnItemClickListener(position -> {
+            Intent intent = new Intent(MainActivity.this,DetailActivity.class);
+            intent.putExtra("offer",hotOffers.get(position));
+            startActivity(intent);
+        });
     }
     private ArrayList<RecentlyViewed> getRecentlyViewedList(){
         recentlyViewed = new ArrayList<>();
@@ -102,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
         categoryOffers.add(new CategoryOffer("Fruits"));
         categoryOffers.add(new CategoryOffer("Fish"));
         categoryOffers.add(new CategoryOffer("Tubers"));
-        categoryOffers.add(new CategoryOffer("Cookies"));
-        categoryOffers.add(new CategoryOffer("Cookies"));
-        categoryOffers.add(new CategoryOffer("Cookies"));
-        categoryOffers.add(new CategoryOffer("Cookies"));
+        categoryOffers.add(new CategoryOffer("Cereals"));
+        categoryOffers.add(new CategoryOffer("Nuts"));
+        categoryOffers.add(new CategoryOffer("Herbs"));
+        categoryOffers.add(new CategoryOffer("Bakery"));
         return  categoryOffers;
     }
 }

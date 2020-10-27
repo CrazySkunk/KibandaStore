@@ -9,14 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skunk.kibandastore.R
 import com.skunk.kibandastore.model.RecentlyViewed
 
-class RecentlyViewedAdapter(private val offerList:List<RecentlyViewed>, private var listener:OnItemClick) : RecyclerView.Adapter<RecentlyViewedAdapter.RecentlyViewedViewHolder>() {
+class RecentlyViewedAdapter(private val offerList:List<RecentlyViewed>, private var listener:OnItemClick?) : RecyclerView.Adapter<RecentlyViewedAdapter.RecentlyViewedViewHolder>() {
     interface OnItemClick{
         fun onItemClick(position: Int)
     }
     fun setOnItemClickListener(listener: OnItemClick){
         this.listener = listener
     }
-    class RecentlyViewedViewHolder(itemView: View,listener: OnItemClick) : RecyclerView.ViewHolder(itemView) {
+    class RecentlyViewedViewHolder(itemView: View,listener: OnItemClick?) : RecyclerView.ViewHolder(itemView) {
         private val title: TextView = itemView.findViewById(R.id.title_recent)
         private val description: TextView = itemView.findViewById(R.id.description_recent)
         val image: ImageView = itemView.findViewById(R.id.image_recent)
@@ -29,7 +29,7 @@ class RecentlyViewedAdapter(private val offerList:List<RecentlyViewed>, private 
             itemView.setOnClickListener {
                 val position = adapterPosition
                 if (position!=RecyclerView.NO_POSITION){
-                    listener.onItemClick(position)
+                    listener!!.onItemClick(position)
                 }
             }
         }

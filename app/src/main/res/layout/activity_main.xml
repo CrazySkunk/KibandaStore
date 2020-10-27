@@ -143,6 +143,7 @@
         android:id="@+id/recently_viewed_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        tools:listitem="@layout/recently_viewed_item"
         ads:layout_constraintBottom_toTopOf="@+id/adView"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintHorizontal_bias="1.0"

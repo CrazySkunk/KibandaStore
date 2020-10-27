@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="quantity">
+        <item>1 kg</item>
+        <item>2 kg</item>
+        <item>3 kg</item>
+        <item>4 kg</item>
+        <item>5 kg</item>
+        <item>6 kg</item>
+        <item>7 kg</item>
+        <item>8 kg</item>
+        <item>9 kg</item>
+        <item>10 kg</item>
+    </string-array>
+    <string-array name="category">
+        <item>Vegetables</item>
+        <item>Fruits</item>
+        <item>Cereals</item>
+        <item>Tubers</item>
+        <item>Fish</item>
+        <item>Nuts</item>
+        <item>Vegetables</item>
+        <item>Bakery</item>
+    </string-array>
+</resources>

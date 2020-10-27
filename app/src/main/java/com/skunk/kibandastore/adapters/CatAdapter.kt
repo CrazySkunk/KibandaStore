@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skunk.kibandastore.R
 import com.skunk.kibandastore.model.CatItem
 
-class CatAdapter(private val catList: List<CatItem>, var listener: OnItemClick?):RecyclerView.Adapter<CatAdapter.CatViewHolder>() {
+class CatAdapter(private val catList: List<CatItem>, private var listener: OnItemClick?):RecyclerView.Adapter<CatAdapter.CatViewHolder>() {
     interface OnItemClick{
         fun onItemClick(position: Int)
     }
@@ -17,7 +17,7 @@ class CatAdapter(private val catList: List<CatItem>, var listener: OnItemClick?)
         this.listener=listener
     }
     class CatViewHolder(itemView:View,listener: OnItemClick?):RecyclerView.ViewHolder(itemView){
-        var image: ImageView =itemView.findViewById(R.id.image_cat)
+        private var image: ImageView =itemView.findViewById(R.id.image_cat)
         var name: TextView =itemView.findViewById(R.id.name_cat)
 
         fun bind(catItem:CatItem){
@@ -28,7 +28,7 @@ class CatAdapter(private val catList: List<CatItem>, var listener: OnItemClick?)
             itemView.setOnClickListener {
                 val position = adapterPosition
                 if (position!=RecyclerView.NO_POSITION){
-                    listener?.onItemClick(position)
+                    listener!!.onItemClick(position)
                 }
             }
         }

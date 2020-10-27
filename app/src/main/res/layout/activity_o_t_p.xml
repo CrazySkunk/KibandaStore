@@ -3,7 +3,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/edit_text_bg"
     android:layout_height="match_parent"
     tools:context=".OTPActivity">
 
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Kibanda Store"
+        android:textSize="30sp"
+        android:fontFamily="cursive"
+        android:textFontWeight="3000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/search_background"
+        android:drawableLeft="@drawable/phone"
+        android:ems="10"
+        android:fontFamily="@font/raleway_medium"
+        android:hint="  Phone number"
+        android:inputType="phone"
+        android:paddingStart="15sp"
+        android:paddingEnd="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.071" />
+
+    <TextView
+        android:id="@+id/warn_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/warning"
+        android:fontFamily="@font/raleway_medium"
+        android:text="Your OTP code will be sent to this number\nEnsure it is correct"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/phone"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="@+id/phone"
+        app:layout_constraintTop_toBottomOf="@+id/phone"
+        app:layout_constraintVertical_bias="0.097" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="Submit"
+        android:fontFamily="casual"
+        android:textFontWeight="4000"
+        android:background="@drawable/buy_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/warn_text"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="@+id/warn_text"
+        app:layout_constraintTop_toBottomOf="@+id/warn_text"
+        app:layout_constraintVertical_bias="0.159" />
 </androidx.constraintlayout.widget.ConstraintLayout>
